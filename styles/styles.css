@@ -1,0 +1,31 @@
+body{
+    margin-left: 35%;
+    margin-top: 15%;
+}
+div {
+    width: 400px;
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+input {
+    margin: 10px;
+    border-radius: 5px;
+}
+
+img {
+    width: 100px;
+    display: 0 auto;
+    
+}
+button{
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+}
+
+select{
+    border-radius: 5px;
+}
