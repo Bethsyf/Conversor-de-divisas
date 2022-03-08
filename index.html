@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="logo-conver.png">
+    <link rel="icon" href="./images/logo-conver.png">
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Conversor de divisas</title>
 </head>
 <body>
     <div>
-        <img src="./logo-conver.png" alt="imagenconvertir"><br>
-        <input type="number" placeholder='Cantidad de dinero'><br>
-        <select name="elige tu moneda">
+        <img src="./images/logo-conver.png" alt="imagenconvertir"><br>
+        <input id="cantidad-dinero" type="number" placeholder='Cantidad de dinero'><br>
+        <select id="origen" name="elige tu moneda">
             <option selected value="0">Elige tu moneda</option>
             <option value="1">Dolar</option>
-            <option value="1">Peso Mexicano</option>
-            <option value="1">Peso Colombiano</option>
-            <option value="1">Euro</option>
-            <option value="1">Libra Esterlina</option>
+            <option value="2">Peso Colombiano</option>
+            <option value="3">Euro</option>
+            <option value="4">Peso Mexicano</option>
+            <option value="5">Libra Esterlina</option>
           </select>
-          <select name="elige tu moneda">
+          <select id="destino" name="elige tu moneda">
             <option selected value="0">Elige tu moneda</option>
             <option value="1">Dolar</option>
-            <option value="1">Peso Mexicano</option>
-            <option value="1">Peso Colombiano</option>
-            <option value="1">Euro</option>
-            <option value="1">Libra Esterlina</option>
+            <option value="2">Peso Colombiano</option>
+            <option value="3">Euro</option>
+            <option value="4">Peso Mexicano</option>
+            <option value="5">Libra Esterlina</option>
           </select>
-        <button>Convertir</button>
+        <button id="btn-calcular-divisa">Convertir</button>
+        <div id="contenedor-resultado" style="text-align:center;font-size: 26px;color: #791F0B;font-weight: 700;line-height: 31px;margin-top:20px;">
+        </div>
+        </div>
     </div>
-    
+    <script src="./scripts/scripts.js"></script>
 </body>
 </html>
