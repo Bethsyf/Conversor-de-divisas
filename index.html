@@ -9,11 +9,12 @@
     <title>Conversor de divisas</title>
 </head>
 <body>
-    <div>
+    <div id="cont-principal">
         <img src="./images/logo-conver.png" alt="imagenconvertir"><br>
-        <input id="cantidad-dinero" type="number" placeholder='Cantidad de dinero'><br>
+        <form id="formulario" action="">
+        <input id="cantidad" type="number" placeholder='Cantidad de dinero'><br>
         <select id="origen" name="elige tu moneda">
-            <option selected value="0">Elige tu moneda</option>
+            <option  selected value="0">Elige tu moneda</option>
             <option value="1">Dolar</option>
             <option value="2">Peso Colombiano</option>
             <option value="3">Euro</option>
@@ -29,9 +30,10 @@
             <option value="5">Libra Esterlina</option>
           </select>
         <button id="btn-calcular-divisa">Convertir</button>
-        <div id="contenedor-resultado" style="text-align:center;font-size: 26px;color: #791F0B;font-weight: 700;line-height: 31px;margin-top:20px;">
+        <div>
+          <input type="number" id="result" disabled></input>
         </div>
-        </div>
+      </form>
     </div>
     <script src="./scripts/scripts.js"></script>
 </body>
