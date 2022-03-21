@@ -2,7 +2,7 @@ body{
     margin-left: 35%;
     margin-top: 15%;
 }
-div {
+#cont-principal {
     width: 400px;
     background-color: lightgray;
     padding: 10px;
@@ -21,11 +21,19 @@ img {
     
 }
 button{
-    background-color: green;
+    background-color: rgb(59, 172, 102);;
     color: white;
     border-radius: 5px;
+    padding: 5px;
 }
 
 select{
     border-radius: 5px;
+}
+
+#resultado{
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+    color: rgb(28, 124, 65);
 }

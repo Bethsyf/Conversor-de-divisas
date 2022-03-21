@@ -1,179 +1,136 @@
+let moneda = ['Elige tu moneda','Dolar','Peso Mexicano','Peso Colombiano','Euro', 'Libra Esterlina'];
+let cambio = ['Elige tu moneda','Dolar','Peso Mexicano','Peso Colombiano','Euro', 'Libra Esterlina'];
 const formulario = document.getElementById('formulario');
 const monedaOrigen = document.getElementById('origen');
-const monedaDestino = document.getElementById('destino');
+const monedaCambio = document.getElementById('destino');
 const validar = document.getElementById('cont-principal');
+const menuOrigen = document.createDocumentFragment();
+const menuCambio = document.createDocumentFragment();
 
-const fragmento = document.createDocumentFragment();
-const fragmento2 = document.createDocumentFragment();
+moneda.forEach((data,index)=>{
+  const item = document.createElement('option');
+  item.setAttribute('value',index)
+  item.textContent = data;
+  menuOrigen.appendChild(item)   
+})
 
-let divisa = ['Elige tu divisa','Dolar','Peso Mexicano','Peso Colombiano','Euro', 'Libra Esterlina'];
-let cambio = ['Elige divisa de cambio','Dolar','Peso Mexicano','Peso Colombiano','Euro', 'Libra Esterlina'];
+cambio.forEach((data,index)=>{
+  const item = document.createElement('option');
+  item.setAttribute('value',index)
+  item.textContent = data;
+  menuCambio.appendChild(item)   
+})
 
-// divisa.forEach((data,index)=>{
-//      const item = document.createElement('option');
-//      item.setAttribute('value',index)
-//      item.textContent = data;
-//      fragmento.appendChild(item)   
-// })
-
-// cambio.forEach((data,index)=>{
-//      const item = document.createElement('option');
-//      item.setAttribute('value',index)
-//      item.textContent = data;
-//      fragmento2.appendChild(item)   
-// })
-
-// listaDivisa.appendChild(fragmento);
-// listaCambio.appendChild(fragmento2);
+monedaOrigen.appendChild(menuOrigen);
+monedaCambio.appendChild(menuCambio);
 
 formulario.addEventListener('submit', (e) => {
-     e.preventDefault();
+  e.preventDefault();
 })
-formulario.addEventListener('submit', function conversor(){
-     let valor = parseFloat(document.getElementById('cantidad').value);  
-     let resultado = 0; 
 
-     const divisaSelect = document.getElementById('origen');
-     const divisaSeleccionada = divisaSelect.options[divisaSelect.selectedIndex].value;
-     const cambioDivisaSelect = document.getElementById('destino');
-     const cambioDivisaSeleccionada = cambioDivisaSelect.options[cambioDivisaSelect.selectedIndex].value;
-
-     const divMensaje = document.createElement('div');
-     divMensaje.classList.add('text-center', 'alert');
-
-      // validación del formulario 
-      if(divisaSeleccionada == 0 || cambioDivisaSeleccionada == 0) {
-          divMensaje.classList.add('alert-danger');
-          divMensaje.appendChild(document.createTextNode('Es requisito escoger las dos monedas'));
-          validar.appendChild(divMensaje)
-          return
-     } 
-     else{        
-     //USD a MXN
-     if(divisaSeleccionada==1&&cambioDivisaSeleccionada==2){
-          let usd = 1;
-          let mxn = 20.42;
-          resultado=(valor*mxn)/usd;
-     }
-     //USD a COP
-     else if(divisaSeleccionada==1&&cambioDivisaSeleccionada==3){
-          let usd = 1;
-          let cop = 3790;
-          resultado=(valor*cop)/usd;
-     }
-     //USD a EUR
-     else if(divisaSeleccionada==1&&cambioDivisaSeleccionada==4){
-          let usd = 1;
-          let eur = 0.86;
-          resultado=(valor*eur)/usd;
-     }
-     //USD a GBP
-     else if(divisaSeleccionada==1&&cambioDivisaSeleccionada==5){
-          let usd = 1;
-          let gbp = 0.74;
-          resultado=(valor*gbp)/usd;
-     }
-     //MXN a USD
-     else if(divisaSeleccionada==2&&cambioDivisaSeleccionada==1){
-          let mxn = 1;
-          let usd = 0.049;
-          resultado=(valor*usd)/mxn;
-     }
-     //MXN a COP
-     else if(divisaSeleccionada==2&&cambioDivisaSeleccionada==3){
-          let mxn = 1;
-          let cop = 185.58;
-          resultado=(valor*cop)/mxn;
-     }
-     //MXN a EUR
-     else if(divisaSeleccionada==2&&cambioDivisaSeleccionada==4){
-          let mxn = 1;
-          let eur = 0.042;
-          resultado=(valor*eur)/mxn;
-     }
-     //MXN a GBP
-     else if(divisaSeleccionada==2&&cambioDivisaSeleccionada==5){
-          let mxn = 1;
-          let gbp = 0.036;
-          resultado=(valor*gbp)/mxn;
-     }
-     //COP a USD
-     else if(divisaSeleccionada==3&&cambioDivisaSeleccionada==1){
-          let cop = 1;
-          let usd = 0.00026;
-          resultado=(valor*usd)/cop;
-     }
-     //COP a MXN
-     else if(divisaSeleccionada==3&&cambioDivisaSeleccionada==2){
-          let cop = 1;
-          let mxn = 0.0054;
-          resultado=(valor*mxn)/cop;
-     }
-     //COP a EUR
-     else if(divisaSeleccionada==3&&cambioDivisaSeleccionada==4){
-          let cop = 1;
-          let eur = 0.00023;
-          resultado=(valor*eur)/cop;
-     }
-     //COP a GBP
-     else if(divisaSeleccionada==3&&cambioDivisaSeleccionada==5){
-          let cop = 1;
-          let gbp = 0.00019;
-          resultado=(valor*gbp)/cop;
-     }
-     //EUR a USD
-     else if(divisaSeleccionada==4&&cambioDivisaSeleccionada==1){
-          let eur = 1;
-          let usd = 1.16;
-          resultado=(valor*usd)/eur;
-     }
-     //EUR a MXN
-      else if(divisaSeleccionada==4&&cambioDivisaSeleccionada==2){
-          let eur = 1;
-          let mxn = 23.71;
-          resultado=(valor*mxn)/eur;
-     }
-     //EUR a COP
-     else if(divisaSeleccionada==4&&cambioDivisaSeleccionada==3){
-          let eur = 1;
-          let cop = 4401.07;
-          resultado=(valor*cop)/eur;
-     }
-     //EUR a GBP
-     else if(divisaSeleccionada==4&&cambioDivisaSeleccionada==5){
-          let eur = 1;
-          let gbp = 0.86;
-          resultado=(valor*gbp)/eur;
-     }
-     //GBP a USD
-     else if(divisaSeleccionada==5&&cambioDivisaSeleccionada==1){
-          let gbp = 1;
-          let usd = 1.36;
-          resultado=(valor*usd)/gbp;
-     }
-     //GBP a MXN
-     else if(divisaSeleccionada==5&&cambioDivisaSeleccionada==2){
-          let gbp = 1;
-          let mxn = 27.73;
-          resultado=(valor*mxn)/gbp;
-     }
-     //GBP a COP
-     else if(divisaSeleccionada==5&&cambioDivisaSeleccionada==3){
-          let gbp = 1;
-          let cop = 5143.41;
-          resultado=(valor*cop)/gbp;
-     }
-     //GBP a EUR
-     else if(divisaSeleccionada==5&&cambioDivisaSeleccionada==4){
-          let gbp = 1;
-          let eur = 1.17;
-          resultado=(valor*eur)/gbp;
-     }
-     //DIVISAS IGUALES
+formulario.addEventListener('submit', function convertir(){
+  let cantidadConvertir = parseFloat(document.getElementById('cantidad').value);  
+  let resultado = 0; 
+  const menuOrigenSelec = document.getElementById('origen');
+  const monedaSeleccionada = menuOrigenSelec.options[menuOrigenSelec.selectedIndex].value;
+  const menuCambioSelec = document.getElementById('destino');
+  const cambioSeleccionado = menuCambioSelec.options[menuCambioSelec.selectedIndex].value;
+  const usd=1, mxn=20.39, cop=3818, eur=0.91, gbp=0.76;
+  const MensValid = document.createElement('div');
+  MensValid.classList.add('text-center', 'alert');
+      
+  if(monedaSeleccionada == 0 || cambioSeleccionado == 0) {
+    MensValid.classList.add('alert-danger');
+    MensValid.appendChild(document.createTextNode('Debes escoger una moneda en cada casilla'));
+    validar.appendChild(MensValid)
+    return
+    } 
+    else{  
+     // de Dolar a Peso Mexicano
+      if(monedaSeleccionada==1&&cambioSeleccionado==2){
+        resultado=(cantidadConvertir*mxn)/usd;
+      }
+     //de Dolar a Peso Colombiano
+      else if(monedaSeleccionada==1&&cambioSeleccionado==3){
+        resultado=(cantidadConvertir*cop)/usd;
+      }
+     //de Dolar a Euro
+      else if(monedaSeleccionada==1&&cambioSeleccionado==4){
+        resultado=(cantidadConvertir*eur)/usd;
+      }
+     //de Dolar a Libra Esterlina
+      else if(monedaSeleccionada==1&&cambioSeleccionado==5){
+        resultado=(cantidadConvertir*gbp)/usd;
+      }
+     //de Peso Mexicano a Dolar
+      else if(monedaSeleccionada==2&&cambioSeleccionado==1){
+        resultado=(cantidadConvertir*usd)/mxn;
+      }
+     //de Peso Mexicano a Peso Colombiano
+      else if(monedaSeleccionada==2&&cambioSeleccionado==3){
+        resultado=(cantidadConvertir*cop)/mxn;
+      }
+     //de Peso Mexicano a Euro
+      else if(monedaSeleccionada==2&&cambioSeleccionado==4){
+        resultado=(cantidadConvertir*eur)/mxn;
+      }
+     //de Peso Mexicano a Libra Esterlina
+      else if(monedaSeleccionada==2&&cambioSeleccionado==5){
+        resultado=(cantidadConvertir*gbp)/mxn;
+      }
+     //de Peso Colombiano a Dolar
+      else if(monedaSeleccionada==3&&cambioSeleccionado==1){
+        resultado=(cantidadConvertir*usd)/cop;
+      }
+     //de Peso Colombiano a Peso Mexicano
+      else if(monedaSeleccionada==3&&cambioSeleccionado==2){
+        resultado=(cantidadConvertir*mxn)/cop;
+      }
+     //de Peso Colombiano a Euro
+      else if(monedaSeleccionada==3&&cambioSeleccionado==4){
+        resultado=(cantidadConvertir*eur)/cop;
+      }
+     //de Peso Colombiano a Libra Esterlina
+      else if(monedaSeleccionada==3&&cambioSeleccionado==5){
+        resultado=(cantidadConvertir*gbp)/cop;
+      }
+     //de euro a Dolar
+      else if(monedaSeleccionada==4&&cambioSeleccionado==1){
+        resultado=(cantidadConvertir*usd)/eur;
+      }
+     //de euro a Peso Mexicano
+      else if(monedaSeleccionada==4&&cambioSeleccionado==2){
+        resultado=(cantidadConvertir*mxn)/eur;
+      }
+     //de euro a Peso Colombiano
+      else if(monedaSeleccionada==4&&cambioSeleccionado==3){
+        resultado=(cantidadConvertir*cop)/eur;
+      }
+     //de euro a Libra Esterlina
+      else if(monedaSeleccionada==4&&cambioSeleccionado==5){
+        resultado=(cantidadConvertir*gbp)/eur;
+      }
+     //de Libra Esterlina a Dolar
+      else if(monedaSeleccionada==5&&cambioSeleccionado==1){
+        resultado=(cantidadConvertir*usd)/gbp;
+      }
+     //de Libra Esterlina a Peso Mexicano
+      else if(monedaSeleccionada==5&&cambioSeleccionado==2){
+        resultado=(cantidadConvertir*mxn)/gbp;
+      }
+     //de Libra Esterlina a Peso Colombiano
+      else if(monedaSeleccionada==5&&cambioSeleccionado==3){
+        resultado=(cantidadConvertir*cop)/gbp;
+      }
+     //de Libra Esterlina a Euro
+      else if(monedaSeleccionada==5&&cambioSeleccionado==4){
+        resultado=(cantidadConvertir*eur)/gbp;
+      }
+     // si las monedas son iguales 
      else{
-          resultado=valor;
+          resultado=cantidadConvertir;
      }
-     document.getElementById("result").value= resultado.toFixed(2);
+     document.getElementById("resultado").value= resultado.toFixed(2);
      
 }
 })
